@@ -1,4 +1,4 @@
-# Russan-Hate-speech-Recognition
+# Russan Hate Speech Recognition
 A final project for Natural Language Processing course in Innopolis University (2020)
 
 ## How to launch
