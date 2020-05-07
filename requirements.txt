@@ -1,0 +1,7 @@
+textstat
+pymorphy2
+dostoevsky
+nltk
+numpy
+pandas
+scikit-learn
