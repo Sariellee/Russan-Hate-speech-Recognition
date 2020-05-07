@@ -5,10 +5,10 @@ from sklearn.metrics import classification_report, plot_confusion_matrix
 from sklearn.model_selection import train_test_split
 from sklearn.svm import LinearSVC
 
-from dataset import read_dataset, balance_dataset
-from feature_extraction import FeatureExtractor
-from preprocessing import Preprocessor
-from sentiment_analyzer import SentimentAnalyzer
+from src.dataset import read_dataset, balance_dataset
+from src.feature_extraction import FeatureExtractor
+from src.preprocessing import Preprocessor
+from src.sentiment_analyzer import SentimentAnalyzer
 
 nltk.download('punkt')
 nltk.download('stopwords')
@@ -37,6 +37,7 @@ if __name__ == "__main__":
         print("initiating sentiment analyzer..")
         df = SentimentAnalyzer().sentiment_label_dataframe(df)
 
+    # acquire TD-IDF features
     print("acquring TF-IDF features..")
     tfidf, vocab, idf_dict = preprocessor.get_TFIDF_features(df, filter_stopwords=False)
 
@@ -45,6 +46,7 @@ if __name__ == "__main__":
     df['text'] = df['text'].apply(preprocessor.tokenize)
     df['text'] = df['text'].apply(preprocessor.lemmatize)
 
+    # extracting the textual features
     print("extracting features..")
     feats = feature_extractor.get_feature_array(df)
     M = np.concatenate([tfidf, feats], axis=1)
@@ -55,9 +57,7 @@ if __name__ == "__main__":
 
     feature_names = variables + feature_extractor.get_feature_names()
 
-    #########
     # MODEL #
-    #########
 
     X = DataFrame(M)
     y = df['hate_speech'].astype(int)
