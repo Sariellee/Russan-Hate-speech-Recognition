@@ -1,5 +1,4 @@
 # Russan Hate Speech Recognition
-A final project for Natural Language Processing course in Innopolis University (2020)
 
 ## How to launch
 1. `git clone https://github.com/Sariellee/Russan-Hate-speech-Recognition`
